@@ -1,0 +1,820 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curly Pineapple EC - Cuidado Natural para tus Rizos</title>
+
+    <!-- Google Fonts: Quicksand (texto) y Caveat (manuscrito) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Librerías de animación y carrusel -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        /* === VARIABLES DE COLOR Y MARCA === */
+        :root {
+            --verde-botanico: #2E5A27;
+            --verde-hoja: #417D38;
+            --amarillo-pina: #F4A261;
+            --amarillo-claro: #E9C46A;
+            --fondo-crema: #FDFBF7;
+            --fondo-tarjeta: #FFFFFF;
+            --texto-oscuro: #233222;
+            --fuente-principal: 'Quicksand', sans-serif;
+            --fuente-manuscrita: 'Caveat', cursive;
+        }
+
+        /* === RESETEO GENERAL === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fuente-principal);
+            background-color: var(--fondo-crema);
+            color: var(--texto-oscuro);
+            overflow-x: hidden;
+        }
+
+        /* === HEADER Y MENÚ SIEMPRE VISIBLE === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--verde-botanico);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--verde-hoja);
+        }
+
+        .btn-header {
+            background-color: var(--verde-botanico);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .btn-header:hover {
+            transform: scale(1.05);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            padding: 130px 5% 60px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            background: radial-gradient(circle at top right, #E9F5E8 0%, var(--fondo-crema) 70%);
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .handwritten-tag {
+            font-family: var(--fuente-manuscrita);
+            font-size: 2rem;
+            color: var(--verde-hoja);
+            display: block;
+            margin-bottom: -10px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--verde-botanico);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .btn-principal {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--amarillo-pina), #E76F51);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(244, 162, 97, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(244, 162, 97, 0.6);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 85%;
+            height: auto;
+            border-radius: 20px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* === BADGES / SELLOS === */
+        .badges-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 40px 5%;
+            background-color: var(--fondo-tarjeta);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .badge-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #F4F9F3;
+            padding: 12px 20px;
+            border-radius: 15px;
+            border: 1px solid #E1EFE0;
+        }
+
+        .badge-card i {
+            font-size: 1.5rem;
+            color: var(--verde-hoja);
+        }
+
+        .badge-card span {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--verde-botanico);
+        }
+
+        /* === SECCIÓN DE BENEFICIOS NATURALES === */
+        .beneficios-section {
+            padding: 80px 5%;
+            background-color: var(--fondo-crema);
+            text-align: center;
+        }
+
+        .grid-beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .tarjeta-beneficio {
+            background-color: var(--fondo-tarjeta);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--verde-hoja);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .tarjeta-beneficio:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-beneficio i {
+            font-size: 2rem;
+            color: var(--amarillo-pina);
+            margin-bottom: 15px;
+        }
+
+        .tarjeta-beneficio h3 {
+            color: var(--verde-botanico);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .tarjeta-beneficio p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* === PRODUCTOS (SWIPER) === */
+        .productos-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .titulo-seccion {
+            font-size: 2.2rem;
+            color: var(--verde-botanico);
+            margin-bottom: 5px;
+        }
+
+        .subtitulo-seccion {
+            font-family: var(--fuente-manuscrita);
+            font-size: 1.8rem;
+            color: var(--amarillo-pina);
+            margin-bottom: 40px;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 20px 10px 50px 10px !important;
+        }
+
+        .swiper-slide {
+            background: var(--fondo-tarjeta);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 2px solid #F0F0F0;
+        }
+
+        .producto-img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .producto-titulo {
+            font-size: 1.3rem;
+            color: var(--verde-botanico);
+            margin-bottom: 8px;
+        }
+
+        .producto-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        .producto-tag {
+            display: inline-block;
+            background-color: #FFF8E7;
+            color: #D97706;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        /* === RUTINA INTERACTIVA === */
+        .rutina-section {
+            padding: 70px 5%;
+            background-color: #F4F9F3;
+            border-radius: 30px;
+            margin: 0 5%;
+        }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: white;
+            border: 2px solid var(--verde-hoja);
+            color: var(--verde-hoja);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--verde-hoja);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === SECCIÓN DE UBICACIÓN Y HORARIOS === */
+        .ubicacion-section {
+            padding: 80px 5%;
+            background-color: var(--fondo-tarjeta);
+        }
+
+        .container-ubicacion {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .ubicacion-img-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .ubicacion-img-box img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .ubicacion-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .ubicacion-info h3 {
+            font-size: 1.8rem;
+            color: var(--verde-botanico);
+            margin-bottom: 15px;
+        }
+
+        .horario-card {
+            background-color: #FFF9E6;
+            border: 2px dashed var(--amarillo-pina);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .horario-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .contacto-item i {
+            color: var(--verde-hoja);
+            font-size: 1.3rem;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--verde-botanico);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .btn-maps:hover {
+            background-color: var(--verde-hoja);
+        }
+
+        /* === BOTONES FLOTANTES === */
+        .social-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.6rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .ig-btn {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+        }
+
+        .wa-btn {
+            background-color: #25D366;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--verde-botanico);
+            color: white;
+            text-align: center;
+            padding: 40px 5% 20px 5%;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* === RESPONSIVE MÓVIL === */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 110px;
+            }
+            .hero-text h1 {
+                font-size: 2.1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .container-ubicacion {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ SUPERIOR -->
+    <header>
+        <a href="#" class="logo-container">
+            <span class="logo-icon">🍍</span>
+            <span class="logo-text">Curly Pineapple</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#rutina">Rutina de Piny</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="https://www.instagram.com/curlypineapple.ec" target="_blank" class="btn-header">Síguenos <i class="fab fa-instagram"></i></a></li>
+        </ul>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-text" data-aos="fade-right">
+            <span class="handwritten-tag">¡Hola! Soy Piny, la nueva amiga de tus rizos 🍍✨</span>
+            <h1>Todo lo que tus rizos necesitan en un solo lugar</h1>
+            <p>Cuidado natural, definición sin frizz y nutrición profunda con extracto de piña e ingredientes naturales.</p>
+            <a href="https://www.instagram.com/curlypineapple.ec" target="_blank" class="btn-principal bloque-separado">
+            <i class="fab fa-instagram"></i> Ir a Instagram @curlypineapple.ec
+        </a>
+
+        <style>
+            /* Añadimos "display: inline-block" para que los márgenes funcionen correctamente en el botón */
+            .bloque-separado {
+                display: inline-block;
+                margin-bottom: 50px; 
+            }
+        </style>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <img src="images/Piny.jpg" alt="Piny y Rizos Felices">
+        </div>
+    </section>
+
+    <!-- SELLOS DE CALIDAD -->
+    <section class="badges-section" data-aos="zoom-in">
+        <div class="badge-card">
+            <i class="fas fa-leaf"></i>
+            <span>Ingredientes Naturales</span>
+        </div>
+        <div class="badge-card">
+            <i class="fas fa-ban"></i>
+            <span>Sin Sulfatos ni Parabenos</span>
+        </div>
+        <div class="badge-card">
+            <i class="fas fa-paw"></i>
+            <span>Cruelty Free</span>
+        </div>
+        <div class="badge-card">
+            <i class="fas fa-magic"></i>
+            <span>Con Piña Real</span>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS DE INGREDIENTES NATURALES -->
+    <section class="beneficios-section" id="beneficios">
+        <h2 class="titulo-seccion">Poder Natural para tus Rizos</h2>
+        <p class="subtitulo-seccion">Ingredientes seleccionados con amor ♡</p>
+
+        <div class="grid-beneficios">
+            <div class="tarjeta-beneficio" data-aos="fade-up">
+                <i class="fas fa-wine-bottle"></i>
+                <h3>Extracto de Piña</h3>
+                <p>Rica en bromelina y vitamina C. Ayuda a exfoliar suavemente el cuero cabelludo, promueve el brillo natural y fortalece la hebra capilar contra la quiebra.</p>
+            </div>
+
+            <div class="tarjeta-beneficio" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-seedling"></i>
+                <h3>Aloe Vera</h3>
+                <p>Aporta una hidratación profunda sin acumulación de peso. Calma el cuero cabelludo sensible, combate la resequedad y sella la humedad natural del rizo.</p>
+            </div>
+
+            <div class="tarjeta-beneficio" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-spa"></i>
+                <h3>Aceite de Coco</h3>
+                <p>Penetra profundamente en la fibra capilar para prevenir la pérdida de proteína. Aporta máxima suavidad, controla el encrespamiento (frizz) y devuelve la elasticidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="productos-section" id="productos">
+        <h2 class="titulo-seccion">Nuestra Línea Completa</h2>
+        <p class="subtitulo-seccion">Rizos más reales, más felices ♡</p>
+
+        <div class="swiper mySwiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/images/shampoo.jpg" class="producto-img" alt="Shampoo">
+                    <h3 class="producto-titulo">Shampoo Capilar</h3>
+                    <span class="producto-tag">Extracto de Piña + Aloe Vera</span>
+                    <p class="producto-desc">Limpieza y frescura suave que cuida el cuero cabelludo.</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/acondicionador.jpg" class="producto-img" alt="Acondicionador">
+                    <h3 class="producto-titulo">Acondicionador</h3>
+                    <span class="producto-tag">Piña + Manteca de Karité</span>
+                    <p class="producto-desc">Hidratación, suavidad e infusión desenredante instantánea.</p>
+                </div>
+                  <div class="swiper-slide">
+                    <img src="/images/mascarilla.jpg" class="producto-img" alt="Mascarilla">
+                    <h3 class="producto-titulo">Mascarilla Nutritiva</h3>
+                    <span class="producto-tag">Extracto de Piña + Aceites Naturales</span>
+                    <p class="producto-desc">Nutrición profunda y reparación para hebras resecas.</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/crema_peinar.jpg" class="producto-img" alt="Crema de Peinar">
+                    <h3 class="producto-titulo">Crema de Peinar</h3>
+                    <span class="producto-tag">Piña + Aceite de Coco</span>
+                    <p class="producto-desc">Define, hidrata y controla el frizz durante todo el día.</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/gel.jpg" class="producto-img" alt="Gel">
+                    <h3 class="producto-titulo">Gel Moldeador</h3>
+                    <span class="producto-tag">Extracto de Piña + Linaza</span>
+                    <p class="producto-desc">Fijación flexible y brillo natural sin efecto acartonado.</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/capilar.jpg" class="producto-img" alt="Exfoliante Capilar">
+                    <h3 class="producto-titulo">Exfoliante Capilar</h3>
+                    <span class="producto-tag">Extracto de Piña + Semillas Naturales</span>
+                    <p class="producto-desc">Limpia, renueva y equilibra el cuero cabelludo.</p>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- RUTINA INTERACTIVA -->
+    <section class="rutina-section" id="rutina" data-aos="fade-up">
+        <h2 class="titulo-seccion" style="text-align: center;">La Rutina de Piny</h2>
+        <p class="subtitulo-seccion" style="text-align: center;">4 pasos sencillos para brillar ✨</p>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" data-paso="paso1">Paso 1: Lavado</button>
+            <button class="tab-btn" data-paso="paso2">Paso 2: Nutrición</button>
+            <button class="tab-btn" data-paso="paso3">Paso 3: Definición</button>
+            <button class="tab-btn" data-paso="paso4">Paso 4: ¡A Brillar!</button>
+        </div>
+
+        <div id="paso1" class="tab-content active">
+            <h3>1. Limpieza suave con Shampoo</h3>
+            <p>Aplica el Shampoo de Piña sobre el cuero cabelludo húmedo, da un suave masaje circular y enjuaga con abundante agua.</p>
+        </div>
+
+        <div id="paso2" class="tab-content">
+            <h3>2. Acondiciona o Aplica Mascarilla</h3>
+            <p>Desenreda suavemente con los dedos o peine de dientes anchos usando el Acondicionador o la Mascarilla de medios a puntas.</p>
+        </div>
+
+        <div id="paso3" class="tab-content">
+            <h3>3. Define con Crema de Peinar y Gel</h3>
+            <p>Con el cabello húmedo, distribuye la Crema de Peinar de Piña y sella con el Gel de Linaza usando la técnica "scrunch".</p>
+        </div>
+
+        <div id="paso4" class="tab-content">
+            <h3>4. ¡Rizos felices y definidos!</h3>
+            <p>Deja secar al aire libre o con difusor. ¡Tus rizos estarán súper suaves, definidos y sin frizz!</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE UBICACIÓN Y HORARIOS -->
+    <section class="ubicacion-section" id="ubicacion" data-aos="fade-up">
+        <h2 class="titulo-seccion" style="text-align: center;">¡Visítanos en nuestra tienda!</h2>
+        <p class="subtitulo-seccion" style="text-align: center;">Ven por tus productos favoritos ♡</p>
+
+        <div class="container-ubicacion">
+            <div class="ubicacion-img-box">
+                <!-- Imagen representativa de la tienda San Marino Shopping -->
+                <img src="images/Products.jpg" alt="Tienda Curly Pineapple San Marino Shopping">
+            </div>
+
+            <div class="ubicacion-info">
+                <h3><i class="fas fa-map-marker-alt" style="color: var(--verde-hoja);"></i> San Marino Shopping</h3>
+                <p style="color: #666; margin-bottom: 15px;">Guayaquil, Ecuador</p>
+
+                <div class="contacto-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span><strong>Teléfono / WhatsApp:</strong> 0929637188</span>
+                </div>
+
+                <div class="contacto-item">
+                    <i class="fas fa-truck"></i>
+                    <span>También hacemos envíos por delivery a todo el país. ♡</span>
+                </div>
+
+                <div class="horario-card">
+                    <h4 style="color: var(--verde-botanico); margin-bottom: 10px;"><i class="fas fa-clock"></i> Horarios de Atención</h4>
+                    <div class="horario-item">
+                        <span>Lunes a Sábado:</span>
+                        <span>12:00 pm - 8:00 pm</span>
+                    </div>
+                    <div class="horario-item">
+                        <span>Domingo:</span>
+                        <span style="color: #D97706;">Cerrado</span>
+                    </div>
+                </div>
+
+                <!-- Enlace directo a Google Maps proporcionado -->
+                <a href="https://maps.app.goo.gl/eUD6DpcqzXXqUtay7?g_st=ac" target="_blank" class="btn-maps">
+                    <i class="fas fa-location-arrow"></i> Abrir en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTONES FLOTANTES -->
+    <div class="social-float">
+        <a href="https://www.instagram.com/curlypineapple.ec" target="_blank" class="float-btn ig-btn" title="Síguenos en Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/593929637188?text=Hola!%20Quiero%20información%20de%20Curly%20Pineapple" target="_blank" class="float-btn wa-btn" title="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Curly Pineapple EC</strong> — Cuidado natural para tus rizos ♡</p>
+        <p>Síguenos en Instagram: <a href="https://www.instagram.com/curlypineapple.ec" target="_blank" style="color: var(--amarillo-claro);">@curlypineapple.ec</a></p>
+        <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.6;">&copy; 2026 Curly Pineapple. Todos los derechos reservados | Leslye C.</p>
+    </footer>
+
+    <!-- LIBRERÍAS DE JS EXTERNAS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- LÓGICA JAVASCRIPT PERSONALIZADA -->
+    <script>
+        // Inicializar animaciones al scroll
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Inicializar carrusel de productos
+        new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 }
+            }
+        });
+
+        // Manejo de pestañas interactivas de la rutina
+        const botonesTab = document.querySelectorAll(".tab-btn");
+        const contenidosTab = document.querySelectorAll(".tab-content");
+
+        botonesTab.forEach(function(boton) {
+            boton.addEventListener("click", function() {
+                const idPaso = boton.getAttribute("data-paso");
+
+                contenidosTab.forEach(function(contenido) {
+                    contenido.classList.remove("active");
+                });
+
+                botonesTab.forEach(function(btn) {
+                    btn.classList.remove("active");
+                });
+
+                boton.classList.add("active");
+                if (idPaso) {
+                    const pasoSeleccionado = document.getElementById(idPaso);
+                    if (pasoSeleccionado) {
+                        pasoSeleccionado.classList.add("active");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
